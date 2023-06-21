@@ -1,10 +1,10 @@
 <template>
-  <h3>{{ tituloComponente }}</h3>
+  <h3>{{ evaluarTitulo }}</h3>
   <h3>{{ titulo }}</h3>
   <p>{{ numero }}<sup>2</sup>={{ obtenerCuadradoComputado }}</p>
   <p>{{ numero }}<sup>2</sup>={{ obtenerCuadradoComputado }}</p>
   <p>{{ numero }}<sup>2</sup>={{ obtenerCuadradoComputado }}</p>
-  <button v-on:click="incrementar()">+</button>
+  <button @click="incrementar()">+</button>
   <button v-on:click="disminuir()">-</button>
 </template>
 
@@ -14,8 +14,8 @@ export default {
   name: "Contador",
   data() {
     return {
-      numero: 5,
-      tituloComponente:this.titulo
+      numero: this.inicio,
+      tituloComponente: this.titulo,
     };
   },
   methods: {
@@ -37,8 +37,33 @@ export default {
       console.log("Entro al metodo cuadrado computado");
       return this.numero * this.numero;
     },
+
+    evaluarTitulo() {
+      return this.tituloComponente || "Valor por defecto";
+    },
   },
-  props: ['titulo','valor2']
+
+  //primera declaracion(manera poco eficiente)
+  //props: ['titulo','valor2']
+
+  //segunda manera( mnas eficiente)
+  //  props: {
+  //  titulo: String,
+  //inicio: Number,
+  //},
+
+  //otra manera
+  props: {
+    titulo: String,
+    inicio: {
+      type: Number,
+      requiered: false,
+      default: 100,
+      validator(value){
+        return value > 100
+      }
+    },
+  },
 };
 </script>
 
