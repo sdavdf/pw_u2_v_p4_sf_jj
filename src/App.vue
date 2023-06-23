@@ -1,11 +1,9 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-
   <CaracolaMagica />
 </template>
 
 <script>
-import CaracolaMagica from './components/CaracolaMagica.vue'
+
 //Se de be importar ese componente
 import CaracolaMagica from './components/CaracolaMagica.vue'
 
